@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+progress::-webkit-progress-value {
+    background-color: #ffec65;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #A09FB1;
+    border-radius: 10px;
+}
