@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { success, error, options } from '../utils/utils';
 
 export function SearchPlaces() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -7,11 +8,15 @@ export function SearchPlaces() {
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
+    const watchID = ""
+    function searchLocation(location) {
+        location = navigator.geolocation.watchPosition(success, error, options);
+    }
     return (
         <>
             <div className='flex justify-around gap-2 py-8 bg-[#1E213A] '>
                 <button onClick={toggleSidebar} type='button' className='w-36 h-9 bg-[#6E707A] cursor-pointer text-center xl:w-44' >Search for Places</button>
-                <button type='button' className='bg-gray-600 rounded-full w-9 p-1.5'>
+                <button onClick={()=> searchLocation(watchID)} type='submit' className='bg-gray-600 rounded-full w-9 xl:w-12 p-1.5'>
                     <img src="./icons/location.svg" alt="icono de busqueda" />
                 </button>
             </div>
