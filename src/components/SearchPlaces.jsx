@@ -1,10 +1,27 @@
 import React from 'react'
-import { useState } from 'react';
-import { success, error, options } from '../utils/utils';
+import { useState, useEffect } from 'react';
+import { success, error, options } from '../hooks/utils';
+import { fetchData } from '../hooks/fetchData';
 
 export function SearchPlaces() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [countries, setCountries] = useState(null)
+    const [search, setSearch] = useState("")
+    console.log(countries);
+    useEffect(() => {
+        fetchData("static_Json/cities.json")
+          .then(data => setCountries(data))
+          .catch(error => console.error(error))
+      }, [search])
 
+    const searcher = (e) => {
+        setSearch(e.target.value)
+    }
+    function handleSearch() {
+        const res = countries.filter(dato => search.toLowerCase() === dato.name.toLowerCase())
+        setCountries(res)
+        return;
+    }
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -30,16 +47,24 @@ export function SearchPlaces() {
                             <input
                                 id='searched'
                                 className='w-[100%] h-9 cursor-pointer ps-2 outline-none'
-                                type="search" placeholder='Search location' />
+                                type="search" 
+                                placeholder='Search location'
+                                value={search} 
+                                onChange={searcher}  />
                         </div>
-                        <button className='bg-blue-700 font-semibold w-auto px-3'>
+                        <button onClick={handleSearch} className='bg-blue-700 cursor-pointer font-semibold w-auto px-3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
                             Search
                         </button>
                     </div>
                     <ul className='mt-8 ps-7'>
-                        <li className='text-2xl my-10'>Puebla, MX</li>
-                        <li className='text-2xl my-10'>Puebla, MX</li>
-                        <li className='text-2xl my-10'>Puebla, MX</li>
+                        {countries &&
+                            countries.slice(0,3).map(country =>
+                                <li key={country.id} className='text-2xl my-10 w-[80%] cursor-pointer transition ease-in-out delay-150 bg-black hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
+                                    <p>{country.name}, {country.country_code}</p>
+                                </li>
+                            )
+                        }
+
                     </ul>
                 </div>
                 <button onClick={toggleSidebar} className="absolute top-3 right-6 text-gray-400 hover:text-white">
