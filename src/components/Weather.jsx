@@ -4,8 +4,6 @@ import { WeatherContext } from './ProvideContext'
 export function Weather() {
     const { icon, cityWeather, getDate, celcios, fare } = useContext(WeatherContext)
 
-    //console.log(cityWeather);
-
     const fechaActual = getDate()
 
     return (
@@ -38,7 +36,7 @@ export function Weather() {
                         <div className='flex mt-6 mb-5'>
                             <img src="./icons/location_on.svg" alt="icono location" />
                             <p className='text-[14px] text-[#A09FB1] font-semibold capitalize opacity-85 ms-2 '>
-                                {cityWeather.city.name}
+                                {cityWeather.city.name}, {cityWeather.city.country}
                                 </p>
                         </div>
                     </div>

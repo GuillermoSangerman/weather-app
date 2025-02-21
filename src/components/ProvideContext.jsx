@@ -1,6 +1,7 @@
 import React, { createContext, use, useEffect, useState } from 'react'
 export const WeatherContext = createContext()
 const token = import.meta.env.VITE_API_KEY
+
 export function ProvideContext({ children }) {
     const [countries, setCountries] = useState([])
     const [cityWeather, setCityWeather] = useState(null)
@@ -9,14 +10,11 @@ export function ProvideContext({ children }) {
     const [icon, setIcon] = useState('')
     const [celcios, setCelcios] = useState([])
     const [fare, setFare] = useState(null)
-    const [lat, setLat] = useState("")
-    const [lon, setLon] = useState("")
-
-    const urlCities = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=3&appid=${token}`//&lang=es
+    const urlCities = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=1&appid=${token}`//&lang=es
 
     const urlforecast = `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${token}`//&lang=es
 
-    const urlLatLon = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${token}`//&lang=es
+
 
     const getLocation = async () => {
 
@@ -43,7 +41,7 @@ export function ProvideContext({ children }) {
     }
     useEffect(() => {
         getLocation()
-    }, [])
+    }, [search])
 
     function getDate() {
         const now = new Date()
@@ -73,7 +71,6 @@ export function ProvideContext({ children }) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            // Fetch city name using OpenWeatherMap API
             fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${token}`)
                 .then(response => response.json())
                 .then(data => {
@@ -114,7 +111,8 @@ export function ProvideContext({ children }) {
                 icon,
                 setCityWeather,
                 getLocation,
-                geoFindMe
+                geoFindMe,
+                
 
             }}
         >

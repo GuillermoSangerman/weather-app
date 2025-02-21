@@ -3,22 +3,17 @@ import { useState, useEffect } from 'react';
 import { WeatherContext } from './ProvideContext';
 
 export function SearchPlaces() {
-    const { countries, setCountries, search, setSearch, setCityWeather, getLocation, geoFindMe } = useContext(WeatherContext)
+    const { countries, setSearch, geoFindMe, setLat } = useContext(WeatherContext)
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-    useEffect(()=>{
-        getLocation()
-    }, [search])
+    
     const [city, setCity] = useState('')
     function handleSearch() {
         setSearch(city)
 
     }
-    function onChanges(e) {
-        let target = e.target
-        console.log(target);
-        let id = parseInt(target.closest('p').id)
-        console.log(id);
+    function onChanges(name,country) {
+        setLat(country)
+        setSearch(name)
         
     }
     const toggleSidebar = () => {
@@ -54,9 +49,9 @@ export function SearchPlaces() {
                     </div>
                     <ul className='mt-8 ps-7'>
                         {countries &&
-                            countries.map(country =>
-                                <li onClick={onChanges} key={country.id} className='text-2xl my-10 w-[80%] cursor-pointer transition ease-in-out delay-150 bg-black hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
-                                    <p  id={country.id}>{country.name}, {country.country}</p>
+                            countries.map(coLocation =>
+                                <li onClick={()=> onChanges(coLocation.name, coLocation.country)} key={coLocation.id} className='text-2xl my-10 w-[80%] cursor-pointer transition ease-in-out delay-150 bg-black hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
+                                    <p  id={coLocation.id}>{coLocation.name}, {coLocation.country}</p>
                                 </li>
                             )
                         }
