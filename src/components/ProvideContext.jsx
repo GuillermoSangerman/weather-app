@@ -1,7 +1,6 @@
 import React, { createContext, use, useEffect, useState } from 'react'
 export const WeatherContext = createContext()
-const token = import.meta.env
-console.log(token);
+const token = import.meta.env.VITE_API_KEY
 export function ProvideContext({ children }) {
     const [countries, setCountries] = useState([])
     const [cityWeather, setCityWeather] = useState(null)
@@ -13,9 +12,9 @@ export function ProvideContext({ children }) {
     const [lat, setLat] = useState("")
     const [lon, setLon] = useState("")
 
-    const urlCities = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=3&appid=${token}`//&lang=es
+    const urlCities = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=3&appid=${token}`//&lang=es
 
-    const urlforecast = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${token}`//&lang=es
+    const urlforecast = `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${token}`//&lang=es
 
     const urlLatLon = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${token}`//&lang=es
 
