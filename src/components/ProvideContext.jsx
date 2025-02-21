@@ -1,7 +1,7 @@
 import React, { createContext, use, useEffect, useState } from 'react'
 export const WeatherContext = createContext()
-const token = import.meta.env.VITE_API_KEY
-
+const token = import.meta.env
+console.log(token);
 export function ProvideContext({ children }) {
     const [countries, setCountries] = useState([])
     const [cityWeather, setCityWeather] = useState(null)
