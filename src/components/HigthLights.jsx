@@ -8,7 +8,7 @@ export function HigthLights() {
   return (
     <>
       {cityWeather &&
-        <div className='grid grid-cols-1 gap-5 px-10 md:px-5 md:grid-cols-2 xl:px-35 xl:gap-8'>
+        <div className='grid grid-cols-1 gap-5 px-10 md:px-5 md:grid-cols-2 xl:px-10 xl:gap-8'>
         <div className='bg-[#1E213A] mt-5 pt-3 flex flex-col items-center'>
           <h3 className='text-[#A09FB1] text-2xl md:text-[1rem] xl:text-2xl'>Wind status</h3>
           <p className='text-7xl font-semibold my-6 md:text-5xl xl:text-7xl'>

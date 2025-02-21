@@ -42,7 +42,7 @@ export function WeatherNextDays() {
           celcios &&
         
           <div className='grid grid-cols-2  mt-6 gap-6 px-10 text-center md:grid-cols-4 md:px-4 md:gap-3 
-        xl:grid-cols-5 xl:px-35 xl:gap-6'>
+        xl:grid-cols-5 xl:px-10 xl:gap-6'>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>Tomorrow</h2>
               <img className='my-1 xl:my-5 flex-grow' width={60} src={`./weather/${rs[0].weather[0].icon}.png`} alt="imagen de clima" />
@@ -103,7 +103,7 @@ export function WeatherNextDays() {
         {cityWeather &&
         fare &&
           <div className='grid grid-cols-2  mt-6 gap-6 px-10 text-center md:grid-cols-4 md:px-4 md:gap-3 
-        xl:grid-cols-5 xl:px-35 xl:gap-6'>
+        xl:grid-cols-5 xl:px-10 xl:gap-6'>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>Tomorrow</h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[0].weather[0].icon}.png`} alt="imagen de clima" />
@@ -162,7 +162,7 @@ export function WeatherNextDays() {
 
           </div>}
         <div className='mt-15 md:my-7'>
-          <h2 className='ps-10 text-2xl font-semibold xl:text-4xl xl:ps-35'>Today's Hightlights</h2>
+          <h2 className='ps-10 text-2xl font-semibold xl:text-4xl xl:ps-10'>Today's Hightlights</h2>
           <HigthLights />
         </div>
         <div className='mt-5 pb-5 flex justify-center'>
