@@ -53,7 +53,7 @@ export function WeatherNextDays() {
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>
-                <input className='w-[73%] h-9 xl:text-[20px]'
+                <input className='w-[73%] h-9 xl:w-[61%] xl:text-[20px]'
                   value={theDay(rs[1].dt)} type="text" disabled />
               </h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[1].weather[0].icon}.png`} alt="imagen de clima" />
@@ -65,7 +65,7 @@ export function WeatherNextDays() {
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>
-                <input className='w-[75%] h-9 xl:text-[19px]'
+                <input className='w-[75%] h-9 xl:w-[61%] xl:text-[19px]'
                   value={theDay(rs[2].dt)} type="text" disabled />
               </h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[2].weather[0].icon}.png`} alt="imagen de clima" />
@@ -77,7 +77,7 @@ export function WeatherNextDays() {
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>
-                <input className='w-[80%] h-9 xl:text-[19px]'
+                <input className='w-[80%] h-9 xl:w-[61%] xl:text-[19px]'
                   value={theDay(rs[3].dt)} type="text" disabled />
               </h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[3].weather[0].icon}.png`} alt="imagen de clima" />
@@ -88,7 +88,7 @@ export function WeatherNextDays() {
               </div>
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
-              <h2 className='text-2xl md:text-[15px] xl:text-2xl'><input className='w-[75%] h-9 xl:text-[20px]'
+              <h2 className='text-2xl md:text-[15px] xl:text-2xl'><input className='w-[75%] h-9 xl:w-[61%] xl:text-[20px]'
                 value={theDay(rs[4].dt)} type="text" disabled /></h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[4].weather[0].icon}.png`} alt="imagen de clima" />
               <div className='flex gap-3 justify-center my-2 xl:my-5'>
@@ -114,7 +114,7 @@ export function WeatherNextDays() {
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>
-                <input className='w-[73%] h-9 xl:text-[20px]'
+                <input className='w-[73%] h-9 xl:w-[61%] xl:text-[20px]'
                   value={theDay(rs[1].dt)} type="text" disabled />
               </h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[1].weather[0].icon}.png`} alt="imagen de clima" />
@@ -126,7 +126,7 @@ export function WeatherNextDays() {
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>
-                <input className='w-[75%] h-9 xl:text-[19px]'
+                <input className='w-[75%] h-9 xl:w-[61%] xl:text-[19px]'
                   value={theDay(rs[2].dt)} type="text" disabled />
               </h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[2].weather[0].icon}.png`} alt="imagen de clima" />
@@ -138,7 +138,7 @@ export function WeatherNextDays() {
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
               <h2 className='text-2xl md:text-[15px] xl:text-2xl'>
-                <input className='w-[80%] h-9 xl:text-[19px]'
+                <input className='w-[80%] h-9 xl:w-[61%] xl:text-[19px]'
                   value={theDay(rs[3].dt)} type="text" disabled />
               </h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[3].weather[0].icon}.png`} alt="imagen de clima" />
@@ -149,7 +149,7 @@ export function WeatherNextDays() {
               </div>
             </div>
             <div className='flex flex-col bg-[#1E213A] pt-4 items-center md:h-auto md:w-25 xl:w-auto'>
-              <h2 className='text-2xl md:text-[15px] xl:text-2xl'><input className='w-[75%] h-9 xl:text-[20px]'
+              <h2 className='text-2xl md:text-[15px] xl:text-2xl'><input className='w-[75%] h-9 xl:w-[61%] xl:text-[20px]'
                 value={theDay(rs[4].dt)} type="text" disabled /></h2>
               <img className='mt-1 xl:mt-5' width={60} src={`./weather/${rs[4].weather[0].icon}.png`} alt="imagen de clima" />
               <div className='flex gap-3 justify-center my-2 xl:my-5'>

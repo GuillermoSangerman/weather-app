@@ -6,8 +6,7 @@ import { WeatherContext } from './useContext';
 export function SearchPlaces() {
     const { countries, setCountries, search, setSearch, setCityWeather, getLocation } = useContext(WeatherContext)
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-   // console.log(search);
-   // console.log(countries);
+
     useEffect(()=>{
         getLocation()
     }, [search])

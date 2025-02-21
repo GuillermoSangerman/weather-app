@@ -1,6 +1,6 @@
 import React, { createContext, use, useEffect, useState } from 'react'
-import { fetchData } from '../hooks/fetchData'
 export const WeatherContext = createContext()
+const token = import.meta.env.VITE_API_KEY
 
 export function UseContext({ children }) {
     const [countries, setCountries] = useState([])
@@ -11,9 +11,9 @@ export function UseContext({ children }) {
     const [celcios, setCelcios] = useState([])
     const [fare, setFare] = useState(null)
 
-    const urlCities = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=3&appid=c35ae5d44c1e69f93ae25f9fc55de5a4`//&lang=es
+    const urlCities = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=3&appid=${token}`//&lang=es
 
-    const urlforecast = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=c35ae5d44c1e69f93ae25f9fc55de5a4`//&lang=es
+    const urlforecast = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${token}`//&lang=es
 
     const getLocation = async () => {
 
@@ -61,9 +61,6 @@ export function UseContext({ children }) {
         setFare([])
     }
 
-
-    const kelvinACelsius = 273.15
-    const kelvinAFahrenheit = 274.24 * 9 / 5 - 459.67
     return (
         <WeatherContext.Provider
             value={{
