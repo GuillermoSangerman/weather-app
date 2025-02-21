@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { WeatherContext } from './useContext'
 
 export function Weather() {
-    const { icon, cityWeather, getDate } = useContext(WeatherContext)
+    const { icon, cityWeather, getDate, celcios, fare } = useContext(WeatherContext)
 
     //console.log(cityWeather);
 
@@ -20,10 +20,16 @@ export function Weather() {
                                 <img className='hidden xl:block' src="./weather/10d.png" alt="imagen de clima" />
                             </div>
                         </div>
+                        {celcios &&
                         <span className='text-8xl mt-10 font-semibold opacity-85'>
                             {(cityWeather.list[0].main.temp - 273.15).toFixed(1)}
                              <span className='text-7xl font-normal opacity-60'>&deg;C</span>
-                        </span>
+                        </span>}
+                        {fare &&
+                        <span className='text-8xl mt-10 font-semibold opacity-85'>
+                        {(cityWeather.list[0].main.temp * 9 / 5 - 459.67).toFixed(1)}
+                         <span className='text-7xl font-normal opacity-60'>&deg;F</span>
+                    </span>}
                         <span className='mt-10 text-3xl text-[#A09FB1] font-semibold capitalize'>
                             {cityWeather.list[0].weather[0].description}
                             </span>
