@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { WeatherContext } from './useContext'
+import { WeatherContext } from './ProvideContext'
 
 export function Weather() {
     const { icon, cityWeather, getDate, celcios, fare } = useContext(WeatherContext)

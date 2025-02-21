@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { HigthLights } from './HigthLights'
-import { WeatherContext } from './useContext'
+import { WeatherContext } from './ProvideContext'
 export function WeatherNextDays() {
 
   const { nextDays, celcios, fare, celci, faren, cityWeather } = useContext(WeatherContext)

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Weather } from './components/weather'
+import { Weather } from './components/Weather'
 import { WeatherNextDays } from './components/WeatherNextDays'
 import { SearchPlaces } from './components/SearchPlaces'
-import { UseContext } from './components/useContext'
+import { ProvideContext } from './components/ProvideContext'
 
 export default function App() {
   return (
-    <UseContext>
+    <ProvideContext>
       <div className='text-white w-full h-full flex flex-col md:flex-row'>
         <div className='md:w-[35%] xl:w-[30%] '>
           <SearchPlaces />
@@ -16,6 +16,6 @@ export default function App() {
           <WeatherNextDays />
         </div>
       </div>
-    </UseContext>
+    </ProvideContext>
   )
 }

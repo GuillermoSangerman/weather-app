@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react';
 import { success, error, options } from '../hooks/utils';
-import { WeatherContext } from './useContext';
+import { WeatherContext } from './ProvideContext';
 
 export function SearchPlaces() {
     const { countries, setCountries, search, setSearch, setCityWeather, getLocation } = useContext(WeatherContext)
