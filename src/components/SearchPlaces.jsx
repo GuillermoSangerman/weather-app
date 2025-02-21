@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react';
-import { success, error, options } from '../hooks/utils';
 import { WeatherContext } from './ProvideContext';
 
 export function SearchPlaces() {
-    const { countries, setCountries, search, setSearch, setCityWeather, getLocation } = useContext(WeatherContext)
+    const { countries, setCountries, search, setSearch, setCityWeather, getLocation, geoFindMe } = useContext(WeatherContext)
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(()=>{
@@ -25,16 +24,14 @@ export function SearchPlaces() {
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
-    const watchID = ""
-    function searchLocation(location) {
-        location = navigator.geolocation.watchPosition(success, error, options);
-    }
+
     return (
         <>
             <div className='flex justify-around gap-2 py-8 bg-[#1E213A] '>
                 <button onClick={toggleSidebar} type='button' className='w-36 h-9 bg-[#6E707A] cursor-pointer text-center xl:w-44' >Search for Places</button>
-                <button onClick={() => searchLocation(watchID)} type='submit' className='bg-gray-600 rounded-full w-9 xl:w-12 p-1.5'>
+                <button onClick={geoFindMe} id='find-me' type='submit' className='bg-gray-600 rounded-full w-9 xl:w-12 p-1.5'>
                     <img src="./icons/location.svg" alt="icono de busqueda" />
+                    <a id="map-link"></a>
                 </button>
             </div>
             <div className={`fixed top-0 left-0 w-full md:w-[35%] h-full bg-[#1E213A] text-white transform transition-transform duration-300 z-50 ${isSidebarOpen ? '-translate-x-0' : '-translate-x-full'

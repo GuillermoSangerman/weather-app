@@ -10,10 +10,14 @@ export function ProvideContext({ children }) {
     const [icon, setIcon] = useState('')
     const [celcios, setCelcios] = useState([])
     const [fare, setFare] = useState(null)
+    const [lat, setLat] = useState("")
+    const [lon, setLon] = useState("")
 
     const urlCities = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=3&appid=${token}`//&lang=es
 
     const urlforecast = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${token}`//&lang=es
+
+    const urlLatLon = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${token}`//&lang=es
 
     const getLocation = async () => {
 
@@ -60,6 +64,39 @@ export function ProvideContext({ children }) {
         setCelcios(null)
         setFare([])
     }
+    function geoFindMe() {
+        const mapLink = document.querySelector("#map-link");
+
+        mapLink.href = "";
+        mapLink.textContent = "";
+
+        function success(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Fetch city name using OpenWeatherMap API
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${token}`)
+                .then(response => response.json())
+                .then(data => {
+                    const nameCity = data.name;
+                    console.log(nameCity);
+                    setSearch(nameCity);
+                })
+                .catch(() => {
+                    alert("Unable to retrieve city name");
+                });
+        }
+
+        function error() {
+            alert("Unable to retrieve your location");
+        }
+
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+        } else {
+            navigator.geolocation.getCurrentPosition(success, error);
+        }
+    }
 
     return (
         <WeatherContext.Provider
@@ -77,7 +114,8 @@ export function ProvideContext({ children }) {
                 getDate,
                 icon,
                 setCityWeather,
-                getLocation
+                getLocation,
+                geoFindMe
 
             }}
         >
