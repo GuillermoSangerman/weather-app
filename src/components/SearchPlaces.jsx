@@ -1,26 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react';
 import { success, error, options } from '../hooks/utils';
-import { fetchData } from '../hooks/fetchData';
+import { WeatherContext } from './useContext';
 
 export function SearchPlaces() {
+    const { countries, setCountries, search, setSearch, setCityWeather, getLocation } = useContext(WeatherContext)
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [countries, setCountries] = useState(null)
-    const [search, setSearch] = useState("")
-    console.log(countries);
-    useEffect(() => {
-        fetchData("static_Json/cities.json")
-          .then(data => setCountries(data))
-          .catch(error => console.error(error))
-      }, [search])
-
-    const searcher = (e) => {
-        setSearch(e.target.value)
-    }
+   // console.log(search);
+   // console.log(countries);
+    useEffect(()=>{
+        getLocation()
+    }, [search])
+    const [city, setCity] = useState('')
     function handleSearch() {
-        const res = countries.filter(dato => search.toLowerCase() === dato.name.toLowerCase())
-        setCountries(res)
-        return;
+        setSearch(city)
+
+    }
+    function onChanges(e) {
+        let target = e.target
+        console.log(target);
+        let id = parseInt(target.closest('p').id)
+        console.log(id);
+        
     }
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -33,11 +34,11 @@ export function SearchPlaces() {
         <>
             <div className='flex justify-around gap-2 py-8 bg-[#1E213A] '>
                 <button onClick={toggleSidebar} type='button' className='w-36 h-9 bg-[#6E707A] cursor-pointer text-center xl:w-44' >Search for Places</button>
-                <button onClick={()=> searchLocation(watchID)} type='submit' className='bg-gray-600 rounded-full w-9 xl:w-12 p-1.5'>
+                <button onClick={() => searchLocation(watchID)} type='submit' className='bg-gray-600 rounded-full w-9 xl:w-12 p-1.5'>
                     <img src="./icons/location.svg" alt="icono de busqueda" />
                 </button>
             </div>
-            <div className={`fixed top-0 left-0 w-full md:w-[30%] h-full bg-[#1E213A] text-white transform transition-transform duration-300 z-50 ${isSidebarOpen ? '-translate-x-0' : '-translate-x-full'
+            <div className={`fixed top-0 left-0 w-full md:w-[35%] h-full bg-[#1E213A] text-white transform transition-transform duration-300 z-50 ${isSidebarOpen ? '-translate-x-0' : '-translate-x-full'
                 }`}>
                 <div className='w-full h-screen'>
                     <div className='flex justify-around pt-15'>
@@ -47,10 +48,9 @@ export function SearchPlaces() {
                             <input
                                 id='searched'
                                 className='w-[100%] h-9 cursor-pointer ps-2 outline-none'
-                                type="search" 
+                                type="search"
                                 placeholder='Search location'
-                                value={search} 
-                                onChange={searcher}  />
+                                onChange={(e)=> setCity(e.target.value)} />
                         </div>
                         <button onClick={handleSearch} className='bg-blue-700 cursor-pointer font-semibold w-auto px-3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
                             Search
@@ -58,9 +58,9 @@ export function SearchPlaces() {
                     </div>
                     <ul className='mt-8 ps-7'>
                         {countries &&
-                            countries.slice(0,3).map(country =>
-                                <li key={country.id} className='text-2xl my-10 w-[80%] cursor-pointer transition ease-in-out delay-150 bg-black hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
-                                    <p>{country.name}, {country.country_code}</p>
+                            countries.map(country =>
+                                <li onClick={onChanges} key={country.id} className='text-2xl my-10 w-[80%] cursor-pointer transition ease-in-out delay-150 bg-black hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 '>
+                                    <p  id={country.id}>{country.name}, {country.country}</p>
                                 </li>
                             )
                         }
